@@ -24,6 +24,11 @@ export function SidebarNav({
             "text-sm text-[#797878]  transition-colors font-bold uppercase",
             currentPath === item.href ? "text-black" : "hover:text-[#000000]"
           )}
+          target={
+            item.href.startsWith("https")
+              ? "_blank"
+              : undefined
+          }
         >
           {item.name}
         </a>

@@ -453,11 +453,11 @@ var _s = __turbopack_refresh__.signature();
 function SidebarNav(t0) {
     _s();
     const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$1$2e$6_babel$2d$plugin$2d$react$2d$compiler$40$19$2e$0$2e$0$2d$beta$2d$e552027$2d$20250112_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0_$5f$react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$compiler$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["c"])(8);
-    if ($[0] !== "6dd3c67d471977c11c351d28e20734bc82f7ae868a65939e10ef6a3f0876a6da") {
+    if ($[0] !== "c0ba4c14916c14bc59889decdaa48735df1f823882d5b190a9cebddfd58d2707") {
         for(let $i = 0; $i < 8; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
-        $[0] = "6dd3c67d471977c11c351d28e20734bc82f7ae868a65939e10ef6a3f0876a6da";
+        $[0] = "c0ba4c14916c14bc59889decdaa48735df1f823882d5b190a9cebddfd58d2707";
     }
     const { items } = t0;
     const pathname = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$1$2e$6_babel$2d$plugin$2d$react$2d$compiler$40$19$2e$0$2e$0$2d$beta$2d$e552027$2d$20250112_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0_$5f$react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["usePathname"])();
@@ -469,6 +469,7 @@ function SidebarNav(t0) {
             t2 = (item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$1$2e$6_babel$2d$plugin$2d$react$2d$compiler$40$19$2e$0$2e$0$2d$beta$2d$e552027$2d$20250112_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0_$5f$react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                     href: item.href,
                     className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$clsx$40$2$2e$1$2e$1$2f$node_modules$2f$clsx$2f$dist$2f$clsx$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])("text-sm text-[#797878]  transition-colors font-bold uppercase", currentPath === item.href ? "text-black" : "hover:text-[#000000]"),
+                    target: item.href.startsWith("https") ? "_blank" : undefined,
                     children: item.name
                 }, item.href, false, {
                     fileName: "[project]/src/components/layout/side-bar-item.tsx",
