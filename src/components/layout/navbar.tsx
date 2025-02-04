@@ -83,18 +83,18 @@ export function Navbar() {
         <SidebarNav
           items={[
             { name: "Home", href: "/" },
-            { name: "Interior design", href: "/interior-design" },
-            { name: "Real estate", href: "/real-estate" },
-            { name: "Short term rental", href: "/short-term-rental" },
-            { name: "Family portrait", href: "/family-portrait" },
+            { name: "Interior design", href: "https://shelleyandblaine.com/interior-design" },
+            { name: "real estate", href: "https://shelleyandblaine.com/real-estate" },
+            { name: "short term rental", href: "/short-term-rental" },
+            { name: "family portrait", href: "/family-portrait" },
             { name: "Engagement Sessions", href: "/engagement-sessions" },
             { name: "Senior Portraits", href: "/senior-portraits" },
             // { name: "Micro Wedding", href: "/micro-wedding" },
             // { name: "WALL ART BY SHELLEY", href: "/wall-art" },
             { name: "Website Design Service", href: "/website-design-service" },
-            { name: "Contact", href: "/contact" },
-            { name: "About", href: "/about" },
-            { name: "In the press", href: "/press" },
+            { name: "contact", href: "/contact" },
+            { name: "about", href: "/about" },
+            { name: "in the press", href: "/press" },
             { name: "Blog", href: "/blog" },
           ]}
         />

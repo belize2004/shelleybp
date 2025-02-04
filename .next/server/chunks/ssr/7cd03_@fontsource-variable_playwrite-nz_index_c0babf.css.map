@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["file:///Users/amrtamer/SWE/work/shelleybp/node_modules/.pnpm/%40fontsource-variable%2Bplaywrite-nz%405.1.1/node_modules/%40fontsource-variable/playwrite-nz/index.css"],"sourcesContent":["/* playwrite-nz-fallback-wght-normal */\n@font-face {\n  font-family: 'Playwrite NZ Variable';\n  font-style: normal;\n  font-display: swap;\n  font-weight: 100 400;\n  src: url(./files/playwrite-nz-fallback-wght-normal.woff2) format('woff2-variations');\n}"],"names":[],"mappings":"AACA","ignoreList":[0]}},
+    {"offset": {"line": 8, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}

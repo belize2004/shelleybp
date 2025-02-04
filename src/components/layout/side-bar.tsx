@@ -38,8 +38,8 @@ export function Sidebar() {
       <SidebarNav
         items={[
           { name: "Home", href: "/" },
-          { name: "Interior design", href: "/interior-design" },
-          { name: "real estate", href: "/real-estate" },
+          { name: "Interior design", href: "https://shelleyandblaine.com/interior-design" },
+          { name: "real estate", href: "https://shelleyandblaine.com/real-estate" },
           { name: "short term rental", href: "/short-term-rental" },
           { name: "family portrait", href: "/family-portrait" },
           { name: "Engagement Sessions", href: "/engagement-sessions" },
