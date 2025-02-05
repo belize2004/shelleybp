@@ -10,14 +10,14 @@ export function Sidebar() {
   return (
     <main className="hidden lg:flex flex-col py-8 px-4 bg-white h-full w-96 gap-6">
       <div className="flex flex-col gap-2 items-center justify-center">
-        {/* <Image
-          src="/logo1.webp"
+        <Image
+          src="/logo.webp"
           width={300}
           height={64.84}
           alt="Logo"
           priority
-        /> */}
-        <h1 className="text-sm font-semibold text-balance mx-auto w-fit text-center text-black flex flex-col gap-px">
+        />
+        {/* <h1 className="text-sm font-semibold text-balance mx-auto w-fit text-center text-black flex flex-col gap-px">
           <span
             style={{
               fontFamily: "Playwrite NZ Variable",
@@ -27,7 +27,7 @@ export function Sidebar() {
             Shelley and Blaine Bressman
           </span>
           <span>Photography and Website Design</span>
-        </h1>
+        </h1> */}
       </div>
       <Separator className="h-px bg-[#c7c7c7] w-1/2" />
       <p className="text-[#797878] text-base">
@@ -46,7 +46,7 @@ export function Sidebar() {
           { name: "Senior Portraits", href: "/senior-portraits" },
           // { name: "Micro Wedding", href: "/micro-wedding" },
           // { name: "WALL ART BY SHELLEY", href: "/wall-art" },
-          { name: "Website Design Service", href: "/website-design-service" },
+          // { name: "Website Design Service", href: "/website-design-service" },
           { name: "contact", href: "/contact" },
           { name: "about", href: "/about" },
           { name: "in the press", href: "/press" },

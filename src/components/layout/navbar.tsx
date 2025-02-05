@@ -40,8 +40,8 @@ export function Navbar() {
         </div>
       </div>
       <div className="flex flex-col w-full gap-2">
-        {/* <Image src="/logo1.webp" width={358} height={77.19} alt="Logo" /> */}
-        <h1 className="text-sm font-semibold text-balance mx-auto w-fit text-center text-black flex flex-col gap-1">
+        <Image src="/logo1.webp" width={358} height={77.19} alt="Logo" />
+        {/* <h1 className="text-sm font-semibold text-balance mx-auto w-fit text-center text-black flex flex-col gap-1">
           <span
             style={{
               fontFamily: "Playwrite NZ Variable",
@@ -51,7 +51,7 @@ export function Navbar() {
             Shelley and Blaine Bressman
           </span>
           <span>Photography and Website Design</span>
-        </h1>
+        </h1> */}
         <p className="text-[#797878] text-base text-center md:text-left w-full z-10">
           Based in Pensacola Florida <br /> Published in the Wall Street Journal
           and Contemporary <br /> Christian Music Magazine
