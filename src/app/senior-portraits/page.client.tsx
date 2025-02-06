@@ -41,7 +41,7 @@ export default function PageClient({ isMobile }: PageClientProps) {
       className="my-8 w-full"
     /> */}
 
-          {data.data[0].photos.map((image, idx) => (
+          {data.data[0]?.photos?.map((image, idx) => (
             <div key={image.id} className="mb-4">
               <Image
                 src={IMAGE_BASE_URL + image.url || "/placeholder.svg"}
@@ -67,7 +67,7 @@ export default function PageClient({ isMobile }: PageClientProps) {
             className="my-8 w-full"
           /> */}
 
-          {data.data[0].photos.map((image, idx) => (
+          {data?.data[0]?.photos.map((image, idx) => (
             <div key={image.id} className="mb-4">
               <Image
                 src={IMAGE_BASE_URL + image.url || "/placeholder.svg"}
@@ -121,7 +121,7 @@ export default function PageClient({ isMobile }: PageClientProps) {
         Contact Shelley Bressman Photography to schedule your session today!
       </div>
       <div className="flex flex-col p-8 gap-8">
-        {data.data[0].blogs.map((b) => (
+        {data?.data[0]?.blogs?.map((b) => (
           <BlogCard key={b.id} blogPost={b} />
         ))}
       </div>
