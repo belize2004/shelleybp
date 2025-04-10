@@ -1,16 +1,8 @@
 import PageClient from './page.client'
-import {getQueryClient} from '../../get-query-client'
-import {blogsOptions, getBlogs} from '@/lib/api/blog'
-import {HydrationBoundary, dehydrate} from '@tanstack/react-query'
+import {getBlogs} from '@/lib/api/blog'
 
 export default async function Page() {
-  const queryClient = getQueryClient()
   const blogs = await getBlogs()
 
-  void queryClient.prefetchQuery(blogsOptions)
-  return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <PageClient blogs={blogs} />
-    </HydrationBoundary>
-  )
+  return <PageClient blogs={blogs} />
 }

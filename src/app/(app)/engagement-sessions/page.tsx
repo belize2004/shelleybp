@@ -1,7 +1,6 @@
-import {engage} from '@/lib/api/categories'
+import {getEngagementSessions} from '@/lib/api/categories'
 import PageClient from './page.client'
-import {getQueryClient} from '../../get-query-client'
-import {HydrationBoundary, dehydrate} from '@tanstack/react-query'
+
 import {Metadata} from 'next'
 import {headers} from 'next/headers'
 
@@ -17,9 +16,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-  const queryClient = getQueryClient()
-
-  void queryClient.prefetchQuery(engage)
+  const engagementSessions = await getEngagementSessions()
 
   const headersList = headers()
   const userAgent = (await headersList).get('user-agent') || ''
@@ -27,9 +24,7 @@ export default async function Page() {
 
   return (
     <div className="p-4">
-      <HydrationBoundary state={dehydrate(queryClient)}>
-        <PageClient isMobile={isMobile} />
-      </HydrationBoundary>
+      <PageClient isMobile={isMobile} engagementSessions={engagementSessions} />
     </div>
   )
 }
