@@ -1,19 +1,19 @@
-"use client";
-import { useState } from "react";
-import Image from "next/image";
-import { Separator } from "../ui/separator";
-import { Button } from "../ui/button";
-import Link from "next/link";
-import { SidebarNav } from "./side-bar-item";
-import { MenuIcon, XIcon } from "lucide-react";
-import "@fontsource-variable/playwrite-nz";
+'use client'
+import {useState} from 'react'
+import Image from 'next/image'
+import {Separator} from '../ui/separator'
+import {Button} from '../ui/button'
+import Link from 'next/link'
+import {SidebarNav} from './side-bar-item'
+import {MenuIcon, XIcon} from 'lucide-react'
+import '@fontsource-variable/playwrite-nz'
 
 export function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+    setIsOpen(!isOpen)
+  }
 
   return (
     <nav className=" flex items-center py-8 px-4 bg-white w-full lg:hidden gap-6 flex-col">
@@ -27,16 +27,8 @@ export function Navbar() {
             priority
           /> */}
         </div>
-        <Button
-          className="md:hidden text-black"
-          onClick={toggleMenu}
-          variant="ghost"
-        >
-          {isOpen ? (
-            <XIcon className="w-8 h-8" />
-          ) : (
-            <MenuIcon className="w-8 h-8" />
-          )}
+        <Button className="md:hidden text-black" onClick={toggleMenu} variant="ghost">
+          {isOpen ? <XIcon className="w-8 h-8" /> : <MenuIcon className="w-8 h-8" />}
         </Button>
       </div>
       <div className="flex flex-col w-full gap-2">
@@ -53,16 +45,11 @@ export function Navbar() {
           <span>Photography and Website Design</span>
         </h1> */}
         <p className="text-[#797878] text-base text-center md:text-left w-full z-10">
-          Based in Pensacola Florida <br /> Published in the Wall Street Journal
-          and Contemporary <br /> Christian Music Magazine
+          Based in Pensacola Florida <br /> Published in the Wall Street Journal and Contemporary{' '}
+          <br /> Christian Music Magazine
         </p>
-        <Button
-          className="text-lg bg-[#3898ec] font-bold w-fit mt-4 md:mt-0 mx-auto z-10"
-          asChild
-        >
-          <Link href="https://m.me/shelleyandblainephotography">
-            Chat with me
-          </Link>
+        <Button className="text-lg bg-[#3898ec] font-bold w-fit mt-4 md:mt-0 mx-auto z-10" asChild>
+          <Link href="https://m.me/shelleyandblainephotography">Chat with me</Link>
         </Button>
         <Image
           src="/rates.webp"
@@ -74,29 +61,30 @@ export function Navbar() {
         />
       </div>
       <div
-        className={`${isOpen ? "flex h-screen" : "hidden"
-          } absolute top-20 left-0 w-full flex-col items-center md:flex md:flex-row md:items-center gap-4 bg-white transition-opacity duration-300 ease-in-out z-20`}
+        className={`${
+          isOpen ? 'flex h-screen' : 'hidden'
+        } absolute top-20 left-0 w-full flex-col items-center md:flex md:flex-row md:items-center gap-4 bg-white transition-opacity duration-300 ease-in-out z-20`}
       >
         {/* <Separator className="h-px bg-[#c7c7c7] w-full md:w-1/2" /> */}
 
         <Separator className="h-px bg-[#c7c7c7] w-full md:w-1/2 mb-8" />
         <SidebarNav
           items={[
-            { name: "Home", href: "/" },
+            {name: 'Home', href: '/'},
             // { name: "Interior design", href: "https://shelleyandblaine.com/interior-design" },
             // { name: "real estate", href: "https://shelleyandblaine.com/real-estate" },
             // { name: "short term rental", href: "/short-term-rental" },
-            { name: "family portrait", href: "/family-portrait" },
-            { name: "family portrait pricing", href: "/blog/wehji44j4ibayyd92n2e0j1c" },
-            { name: "Engagement Sessions", href: "/engagement-sessions" },
-            { name: "Senior Portraits", href: "/senior-portraits" },
+            {name: 'family portrait', href: '/family-portrait'},
+            {name: 'family portrait pricing', href: '/blog/4ea5eb57-58e5-4b58-9d5a-a6cc0126cc7f'},
+            {name: 'Engagement Sessions', href: '/engagement-sessions'},
+            {name: 'Senior Portraits', href: '/senior-portraits'},
             // { name: "Micro Wedding", href: "/micro-wedding" },
             // { name: "WALL ART BY SHELLEY", href: "/wall-art" },
             // { name: "Website Design Service", href: "/website-design-service" },
-            { name: "contact", href: "/contact" },
-            { name: "about", href: "/about" },
-            { name: "in the press", href: "/press" },
-            { name: "Blog", href: "/blog" },
+            {name: 'contact', href: '/contact'},
+            {name: 'about', href: '/about'},
+            {name: 'in the press', href: '/press'},
+            {name: 'Blog', href: '/blog'}
           ]}
         />
         <Separator className="h-px bg-[#c7c7c7] w-full md:w-1/2" />
@@ -117,5 +105,5 @@ export function Navbar() {
         />
       </div>
     </nav>
-  );
+  )
 }
