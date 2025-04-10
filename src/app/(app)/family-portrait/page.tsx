@@ -1,8 +1,7 @@
-import {family} from '@/lib/api/categories'
+import {getFamilyPortraits} from '@/lib/api/categories'
 
 import PageClient from './page.client'
-import {getQueryClient} from '../../get-query-client'
-import {dehydrate, HydrationBoundary} from '@tanstack/react-query'
+
 import {Metadata} from 'next'
 import {headers} from 'next/headers'
 
@@ -18,9 +17,8 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-  const queryClient = getQueryClient()
+  const familyPortraits = await getFamilyPortraits()
 
-  void queryClient.prefetchQuery(family)
   const headersList = headers()
   const userAgent = (await headersList).get('user-agent') || ''
   const isMobile = /mobile/i.test(userAgent)
@@ -34,9 +32,8 @@ export default async function Page() {
         Pensacola, Perdido Key, Orange Beach, Gulf Shores, Fort Morgan and Navarre Includes 2
         photographers
       </p>
-      <HydrationBoundary state={dehydrate(queryClient)}>
-        <PageClient isMobile={isMobile} />
-      </HydrationBoundary>
+
+      <PageClient isMobile={isMobile} familyPortraits={familyPortraits} />
     </div>
   )
 }

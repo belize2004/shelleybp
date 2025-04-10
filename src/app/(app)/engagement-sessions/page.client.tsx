@@ -41,7 +41,6 @@ export default function PageClient({isMobile, engagementSessions = null}: PageCl
 
           {engagementSessions?.photos?.map((image, idx) => {
             const imgUrl = generalImageURL(image)
-            console.log(imgUrl)
             return (
               <div key={image._key} className="mb-4">
                 <Image
@@ -71,7 +70,6 @@ export default function PageClient({isMobile, engagementSessions = null}: PageCl
 
           {engagementSessions?.photos?.map((image, idx) => {
             const imgUrl = generalImageURL(image)
-            console.log(imgUrl)
             return (
               <div key={image._key} className="mb-4">
                 {' '}
@@ -171,7 +169,7 @@ export default function PageClient({isMobile, engagementSessions = null}: PageCl
         </strong>
       </p>
       <div className="flex flex-col p-8 gap-8">
-        {engagementSessions?.blogs?.map((b) => <BlogCard key={b.id} blogPost={b} />)}
+        {engagementSessions?.blogs?.map((b) => <BlogCard key={b._id} blogPost={b} />)}
       </div>
     </>
   )

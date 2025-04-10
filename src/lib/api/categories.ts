@@ -14,6 +14,19 @@ export const family = queryOptions({
   }
 })
 
+export async function getFamilyPortraits() {
+  try {
+    const familyPortraits = await client.fetch(
+      '*[_type == "category" && name == "family-portraits"][0]',
+      {},
+      {next: {revalidate: 600}}
+    )
+    return familyPortraits
+  } catch (error) {
+    return []
+  }
+}
+
 export const inte = queryOptions({
   queryKey: ['interior-design'],
   queryFn: async () => {

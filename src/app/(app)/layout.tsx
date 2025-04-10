@@ -30,7 +30,7 @@ export default function AppLayout({
         <body
           className={`${mont.className} antialiased bg-[#e1dcd8] flex h-screen max-h-screen  lg:overflow-hidden flex-col lg:flex-row`}
         >
-          <aside className="lg:flex-grow-0 bg-white lg:h-screen ">
+          <aside className="lg:flex-grow-0 bg-white lg:h-screen overflow-y-auto">
             <Sidebar />
             <Navbar />
           </aside>
