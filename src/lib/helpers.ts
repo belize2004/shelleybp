@@ -9,7 +9,11 @@ export const generalImageURL = (image: any) => {
         ? imgId?.replace('-jpg', '.jpg')
         : imgId?.includes('-jpeg')
           ? imgId?.replace('-jpeg', '.jpeg')
-          : imgId
+          : imgId?.includes('-webp')
+            ? imgId?.replace('-webp', '.webp')
+            : imgId?.includes('-avig')
+              ? imgId?.replace('-avif', '.avif')
+              : imgId
   }
 
   return `https://cdn.sanity.io/images/${projectId}/${dataset}/${imgId}`

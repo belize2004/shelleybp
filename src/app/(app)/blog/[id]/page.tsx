@@ -1,23 +1,24 @@
-import Image from "next/image";
-import { format } from "date-fns";
-import { notFound } from "next/navigation";
-import { getBlog } from "@/lib/api/blog";
-import { IMAGE_BASE_URL } from "@/lib/const";
-import { Root } from "@/lib/types";
-import { RenderContent } from "@/lib/utils";
+import Image from 'next/image'
+import {format} from 'date-fns'
+import {notFound} from 'next/navigation'
+import {getBlogById} from '@/lib/api/blog'
+
+import {generalImageURL} from '@/lib/helpers'
+import {PortableText} from 'next-sanity'
 
 interface Props {
-  params: Promise<{ id: string }>;
+  params: Promise<{id: string}>
 }
 
-export default async function Page({ params }: Props) {
-  const post = await getBlog((await params).id);
-
-  if (!post || !post.data) {
-    notFound();
+export default async function Page({params}: Props) {
+  const blog = await getBlogById((await params).id)
+  if (!blog) {
+    notFound()
   }
-
-  const postData: Root["data"][0]["blogs"][0] = post.data;
+  const postData = blog
+  const dimension = blog.cover ? postData.cover.asset._ref.split('-')[2] : ''
+  const width = dimension ? dimension.split('x')[0] : 'initial'
+  const height = dimension ? dimension.split('x')[1] : 'initial'
 
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
@@ -25,31 +26,29 @@ export default async function Page({ params }: Props) {
         {/* <Badge variant="secondary" className="mb-2 text-lg border-zinc-400">
           {postData.category.name}
         </Badge> */}
-        <h1 className="text-3xl font-bold mb-4">{postData.title}</h1>
+        <h1 className="text-3xl font-bold mb-4">{postData.name}</h1>
         <p className="text-muted-foreground mb-4">
-          Published on {format(new Date(postData.publishedAt), "MMMM d, yyyy")}
+          Published on {format(new Date(postData._createdAt), 'MMMM d, yyyy')}
         </p>
       </header>
-      {
-        postData.cover && (
-          <div className="mb-8">
-            <Image
-              src={IMAGE_BASE_URL + postData.cover.url}
-              width={postData.cover.width}
-              height={postData.cover.height}
-              alt={postData.cover.alternativeText || "Cover image"}
-              className="w-full h-auto rounded-lg"
-            />
-          </div>
-        )
-      }
+      {postData.cover && (
+        <div className="mb-8">
+          <Image
+            src={generalImageURL(postData.cover)}
+            width={width}
+            height={height}
+            alt={postData.cover.alt || 'Cover image'}
+            className="w-full h-auto rounded-lg"
+          />
+        </div>
+      )}
 
       <div className="prose prose-lg max-w-none mb-8">
         <p>{postData.desc}</p>
       </div>
 
       <div className="prose prose-lg max-w-none">
-        <RenderContent content={postData.content as any} />
+        <PortableText value={postData.content} />
       </div>
 
       {/* {postData.gallery && postData.gallery.length > 0 && (
@@ -70,5 +69,5 @@ export default async function Page({ params }: Props) {
         </section>
       )} */}
     </article>
-  );
+  )
 }
