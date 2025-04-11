@@ -97,6 +97,19 @@ export const engage = queryOptions({
   }
 })
 
+export async function getSeniorPortraits() {
+  try {
+    const seniorPortraits = await client.fetch(
+      '*[_type == "category" && name == "senior-portraits"][0]',
+      {},
+      {next: {revalidate: 600}}
+    )
+    return seniorPortraits
+  } catch (error) {
+    return []
+  }
+}
+
 export const senior = queryOptions({
   queryKey: ['senior-portrait'],
   queryFn: async () => {

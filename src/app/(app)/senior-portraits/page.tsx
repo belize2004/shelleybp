@@ -1,4 +1,4 @@
-import {senior} from '@/lib/api/categories'
+import {getSeniorPortraits, senior} from '@/lib/api/categories'
 
 import PageClient from './page.client'
 import {getQueryClient} from '../../get-query-client'
@@ -17,18 +17,18 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-  const queryClient = getQueryClient()
-
-  void queryClient.prefetchQuery(senior)
+  // const queryClient = getQueryClient()
+  const seniorPortraits = await getSeniorPortraits()
+  // void queryClient.prefetchQuery(senior)
   const headersList = headers()
   const userAgent = (await headersList).get('user-agent') || ''
   const isMobile = /mobile/i.test(userAgent)
 
   return (
     <div className="p-4">
-      <HydrationBoundary state={dehydrate(queryClient)}>
-        <PageClient isMobile={isMobile} />
-      </HydrationBoundary>
+      {/* <HydrationBoundary state={dehydrate(queryClient)}> */}
+      <PageClient isMobile={isMobile} seniorPortraits={seniorPortraits} />
+      {/* </HydrationBoundary> */}
     </div>
   )
 }
