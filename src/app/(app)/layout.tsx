@@ -28,7 +28,7 @@ export default function AppLayout({
       <Providers>
         {/* <CSPostHogProvider> */}
         <body
-          className={`${mont.className} antialiased bg-[#e1dcd8] flex h-screen max-h-screen  lg:overflow-hidden flex-col lg:flex-row`}
+          className={`${mont.className} antialiased bg-[#d6faf6] flex h-screen max-h-screen  lg:overflow-hidden flex-col lg:flex-row`}
         >
           <aside className="lg:flex-grow-0 bg-white lg:h-screen overflow-y-auto">
             <Sidebar />

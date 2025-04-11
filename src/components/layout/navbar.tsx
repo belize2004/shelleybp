@@ -77,7 +77,12 @@ export function Navbar() {
             {name: 'family portrait', href: '/family-portrait'},
             {name: 'family portrait pricing', href: '/blog/4ea5eb57-58e5-4b58-9d5a-a6cc0126cc7f'},
             {name: 'Engagement Sessions', href: '/engagement-sessions'},
+            {
+              name: 'Engagement Sessions Pricing',
+              href: '/blog/c82d67ce-5de0-4ef0-920a-bf4b27f40810'
+            },
             {name: 'Senior Portraits', href: '/senior-portraits'},
+            {name: 'Senior Portrait Pricing', href: '/blog/cb76f642-bea9-49dc-880e-17c065df80bc'},
             // { name: "Micro Wedding", href: "/micro-wedding" },
             // { name: "WALL ART BY SHELLEY", href: "/wall-art" },
             // { name: "Website Design Service", href: "/website-design-service" },
@@ -89,13 +94,20 @@ export function Navbar() {
         />
         <Separator className="h-px bg-[#c7c7c7] w-full md:w-1/2" />
 
-        <Image
-          src="/testmonial.webp"
-          width={300}
-          height={200}
-          alt="Testmonial"
-          className="w-60 mt-4 md:mt-0"
-        />
+        <a
+          href="https://www.bbb.org/us/fl/pensacola/profile/photographer/shelley-bressman-photography-0683-90097858/#sealclick"
+          target="_blank"
+          rel="nofollow"
+        >
+          <Image
+            src="http://seal-nwfl.bbb.org/seals/blue-seal-200-42-bbb-90097858.png"
+            width={300}
+            height={200}
+            className="w-60 mt-4 md:mt-0"
+            style={{border: 0}}
+            alt="Shelley Bressman Photography BBB Business Review"
+          />
+        </a>
         <Image
           src="/testmonial2.webp"
           width={300}

@@ -4,6 +4,7 @@ import PageClient from './page.client'
 
 import {Metadata} from 'next'
 import {headers} from 'next/headers'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Portrait Photographer Pensacola Florida',
@@ -28,6 +29,11 @@ export default async function Page() {
       <h1 className="text-4xl font-bold w-fit mx-auto text-center">
         Family Portrait Photography <br /> Let us tell your story
       </h1>
+      <Link href="/blog/4ea5eb57-58e5-4b58-9d5a-a6cc0126cc7f">
+        <h3 className="text-xl text-center my-4 text-blue-500 hover:text-blue-700 underline">
+          Family Portrait Pricing
+        </h3>
+      </Link>
       <p className="text-xl text-center my-4">
         Pensacola, Perdido Key, Orange Beach, Gulf Shores, Fort Morgan and Navarre Includes 2
         photographers

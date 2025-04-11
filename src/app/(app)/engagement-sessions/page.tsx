@@ -3,6 +3,7 @@ import PageClient from './page.client'
 
 import {Metadata} from 'next'
 import {headers} from 'next/headers'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Engagement Sessions Pensacola | Shelley Bressman Photography',
@@ -24,6 +25,12 @@ export default async function Page() {
 
   return (
     <div className="p-4">
+      <h1 className="text-4xl font-bold  w-fit mx-auto text-center">Engagement Sessions</h1>
+      <Link href="/blog/c82d67ce-5de0-4ef0-920a-bf4b27f40810">
+        <h3 className="text-xl text-center my-4 text-blue-500 hover:text-blue-700 underline">
+          Engagement Session Pricing
+        </h3>
+      </Link>
       <PageClient isMobile={isMobile} engagementSessions={engagementSessions} />
     </div>
   )
