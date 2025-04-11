@@ -1,5 +1,6 @@
-import { Blog } from "../types";
-import { axiosInstance } from "./instance";
+import {client} from '@/sanity/lib/client'
+import {Blog} from '../types'
+import {axiosInstance} from './instance'
 
 interface Res {
   data: ResData[];
