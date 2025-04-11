@@ -129,3 +129,16 @@ export const wall = queryOptions({
     return response.data
   }
 })
+
+export async function getWallArt() {
+  try {
+    const wallArt = await client.fetch(
+      '*[_type == "category" && name == "wall-art"][0]',
+      {},
+      {next: {revalidate: 600}}
+    )
+    return wallArt
+  } catch (error) {
+    return []
+  }
+}
