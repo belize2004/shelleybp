@@ -66,12 +66,15 @@ export default function PageClient({isMobile, familyPortraits = null}: PageClien
 
           {familyPortraits?.photos?.map((image, idx) => {
             const imgUrl = generalImageURL(image)
+            const dimension = image.asset._ref.split('-')[2]
+            const width = dimension ? dimension.split('x')[0] : 1200
+            const height = dimension ? dimension.split('x')[1] : 120
             return (
               <div key={image._key} className="mb-4">
                 <Image
                   src={imgUrl || '/placeholder.svg'}
-                  width={image.width || 1200}
-                  height={image.height || 120}
+                  width={width || 1200}
+                  height={height || 120}
                   alt={image.title || 'Image'}
                   className="rounded-xl w-full h-auto" // Made image responsive
                 />
@@ -95,13 +98,15 @@ export default function PageClient({isMobile, familyPortraits = null}: PageClien
 
           {familyPortraits?.photos?.map((image, idx) => {
             const imgUrl = generalImageURL(image)
-
+            const dimension = image.asset._ref.split('-')[2]
+            const width = dimension ? dimension.split('x')[0] : 1200
+            const height = dimension ? dimension.split('x')[1] : 120
             return (
               <div key={image._key} className="mb-4">
                 <Image
                   src={imgUrl || '/placeholder.svg'}
-                  width={image.width || 1200}
-                  height={image.height || 120}
+                  width={width || 1200}
+                  height={height || 120}
                   alt={image.title || 'Image'}
                   className="rounded-xl w-full h-auto" // Made image responsive
                 />

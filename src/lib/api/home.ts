@@ -123,7 +123,16 @@ export const homeOptions = queryOptions({
       `/homes?populate[gallery_item][populate]=*&populate[blogs][populate]=*`
     );
 
-    console.log(response.data);
-    return response.data;
-  },
-});
+    console.log(response.data)
+    return response.data
+  }
+})
+
+export async function getHomeData() {
+  try {
+    const homeData = await client.fetch('*[_type == "home"][0]', {}, {next: {revalidate: 600}})
+    return homeData
+  } catch (error) {
+    return []
+  }
+}

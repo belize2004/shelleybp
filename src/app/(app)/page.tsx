@@ -1,8 +1,7 @@
 import {headers} from 'next/headers'
 import PageClient from './page.client'
-import {homeOptions} from '@/lib/api/home'
-import {getQueryClient} from '../get-query-client'
-import {dehydrate, HydrationBoundary} from '@tanstack/react-query'
+import {getHomeData} from '@/lib/api/home'
+
 import {Metadata} from 'next'
 
 export const metadata: Metadata = {
@@ -12,8 +11,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  const queryClient = getQueryClient()
-  await queryClient.prefetchQuery(homeOptions)
+  const homeData = await getHomeData()
 
   const headersList = headers()
   const userAgent = (await headersList).get('user-agent') || ''
@@ -21,9 +19,7 @@ export default async function Home() {
 
   return (
     <div className="p-4">
-      <HydrationBoundary state={dehydrate(queryClient)}>
-        <PageClient isMobile={isMobile} />
-      </HydrationBoundary>
+      <PageClient isMobile={isMobile} homeData={homeData} />
     </div>
   )
 }
