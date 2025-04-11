@@ -106,6 +106,19 @@ export const micro = queryOptions({
   }
 })
 
+export async function getMicroWeddings() {
+  try {
+    const microWeddings = await client.fetch(
+      '*[_type == "category" && name == "micro-wedding"][0]',
+      {},
+      {next: {revalidate: 600}}
+    )
+    return microWeddings
+  } catch (error) {
+    return []
+  }
+}
+
 export const wall = queryOptions({
   queryKey: ['wall'],
   queryFn: async () => {

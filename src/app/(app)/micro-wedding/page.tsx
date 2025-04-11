@@ -1,4 +1,4 @@
-import {micro} from '@/lib/api/categories'
+import {getMicroWeddings, micro} from '@/lib/api/categories'
 import PageClient from './page.client'
 import {getQueryClient} from '../../get-query-client'
 import {HydrationBoundary, dehydrate} from '@tanstack/react-query'
@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   const queryClient = getQueryClient()
+  const microWeddings = await getMicroWeddings()
 
   void queryClient.prefetchQuery(micro)
   const headersList = headers()
@@ -22,7 +23,7 @@ export default async function Page() {
   return (
     <div className="p-4">
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <PageClient isMobile={isMobile} />
+        <PageClient isMobile={isMobile} microWeddings={microWeddings} />
       </HydrationBoundary>
     </div>
   )

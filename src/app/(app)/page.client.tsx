@@ -2,9 +2,7 @@
 
 import Image from 'next/image'
 import Masonry from 'react-masonry-css'
-import {IMAGE_BASE_URL} from '@/lib/const'
-import {useSuspenseQuery} from '@tanstack/react-query'
-import {homeOptions} from '@/lib/api/home'
+
 import {BlogCard} from '@/components/blog/card'
 import {generalImageURL} from '@/lib/helpers'
 
@@ -14,7 +12,6 @@ interface PageClientProps {
 }
 
 export default function PageClient({isMobile, homeData = null}: PageClientProps) {
-  const {data} = useSuspenseQuery(homeOptions)
   const breakpointColumnsObj = {
     default: 3,
     1440: 4,
