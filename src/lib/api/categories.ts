@@ -49,6 +49,19 @@ export const reale = queryOptions({
   }
 })
 
+export async function getShortTermRental() {
+  try {
+    const shortTermRentals = await client.fetch(
+      '*[_type == "category" && name == "short-term-rental"][0]',
+      {},
+      {next: {revalidate: 600}}
+    )
+    return shortTermRentals
+  } catch (error) {
+    return []
+  }
+}
+
 export const sh = queryOptions({
   queryKey: ['short'],
   queryFn: async () => {
