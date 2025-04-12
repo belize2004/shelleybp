@@ -5,6 +5,7 @@ import PageClient from './page.client'
 import {Metadata} from 'next'
 import {headers} from 'next/headers'
 import Link from 'next/link'
+import PricingCards from '@/components/pages/pricing-cards'
 
 export const metadata: Metadata = {
   title: 'Portrait Photographer Pensacola Florida',
@@ -38,6 +39,8 @@ export default async function Page() {
         Pensacola, Perdido Key, Orange Beach, Gulf Shores, Fort Morgan and Navarre Includes 2
         photographers
       </p>
+
+      <PricingCards pricing_cards={familyPortraits?.pricing_cards || []} />
 
       <PageClient isMobile={isMobile} familyPortraits={familyPortraits} />
     </div>

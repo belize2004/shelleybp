@@ -6,6 +6,7 @@ import {dehydrate, HydrationBoundary} from '@tanstack/react-query'
 import {Metadata} from 'next'
 import {headers} from 'next/headers'
 import Link from 'next/link'
+import PricingCards from '@/components/pages/pricing-cards'
 
 export const metadata: Metadata = {
   title: 'Senior Portrait Photography Pensacola | Shelley Bressman Photography',
@@ -33,6 +34,9 @@ export default async function Page() {
           Senior Portraits FAQ
         </h3>
       </Link>
+
+      <PricingCards pricing_cards={seniorPortraits?.pricing_cards || []} />
+
       {/* <HydrationBoundary state={dehydrate(queryClient)}> */}
       <PageClient isMobile={isMobile} seniorPortraits={seniorPortraits} />
       {/* </HydrationBoundary> */}
