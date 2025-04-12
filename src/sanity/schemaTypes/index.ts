@@ -6,7 +6,16 @@ import {blogType} from './blogType'
 import {userType} from './userType'
 import {blockContentType} from './blockContentType'
 import {galleryItemType} from './galleryItem'
+import {pricingCardType} from './pricingCardType'
 
 export const schema: {types: SchemaTypeDefinition[]} = {
-  types: [blockContentType, galleryItemType, homeType, categoryType, blogType, userType]
+  types: [
+    blockContentType,
+    pricingCardType,
+    galleryItemType,
+    homeType,
+    categoryType,
+    blogType,
+    userType
+  ]
 }

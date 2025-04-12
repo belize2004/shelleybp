@@ -41,17 +41,12 @@ export const categoryType = defineType({
           ]
         })
       ]
+    }),
+    defineField({
+      title: 'Pricing Cards',
+      name: 'pricing_cards',
+      type: 'array',
+      of: [{type: 'blockObject'}]
     })
   ]
-  // preview: {
-  //   select: {
-  //     title: 'title',
-  //     blog: 'blog.name',
-  //     media: 'photo'
-  //   },
-  //   prepare(selection) {
-  //     const {blog} = selection
-  //     return {...selection, subtitle: blog && `by ${blog}`}
-  //   }
-  // }
 })
