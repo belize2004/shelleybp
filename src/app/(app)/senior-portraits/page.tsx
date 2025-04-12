@@ -30,7 +30,7 @@ export default async function Page() {
       <h1 className="text-4xl font-bold w-fit mx-auto text-center">Senior Portraits</h1>
       <Link href="/blog/cb76f642-bea9-49dc-880e-17c065df80bc">
         <h3 className="text-xl text-center my-4 text-blue-500 hover:text-blue-700 underline">
-          Senior Portraits Pricing
+          Senior Portraits FAQ
         </h3>
       </Link>
       {/* <HydrationBoundary state={dehydrate(queryClient)}> */}

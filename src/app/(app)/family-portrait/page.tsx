@@ -31,7 +31,7 @@ export default async function Page() {
       </h1>
       <Link href="/blog/4ea5eb57-58e5-4b58-9d5a-a6cc0126cc7f">
         <h3 className="text-xl text-center my-4 text-blue-500 hover:text-blue-700 underline">
-          Family Portrait Pricing
+          Family Portrait FAQ
         </h3>
       </Link>
       <p className="text-xl text-center my-4">
