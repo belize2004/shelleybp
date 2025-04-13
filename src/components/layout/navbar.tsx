@@ -16,56 +16,54 @@ export function Navbar() {
   }
 
   return (
-    <nav className=" flex items-center py-8 px-4 bg-white w-full lg:hidden gap-6 flex-col">
-      <div className="flex flex-row items-center justify-between w-full ">
-        <div className="flex flex-col">
-          {/* <Image
-            src="/logo1.webp"
-            width={150}
-            height={100}
-            alt="Logo"
-            priority
-          /> */}
+    <nav className="flex items-center p-4 bg-white w-full md:hidden gap-6 flex-col">
+      <div className="flex flex-row items-center justify-between w-full">
+        <div className="flex flex-col gap-2 items-center justify-center">
+          <Image src="/logo.webp" width={300} height={64.84} alt="Logo" priority sizes="100%" />
+          {/* <span
+            style={{
+              fontFamily: 'Playwrite NZ Variable'
+            }}
+            className="text-xl"
+          >
+            Portrait Photography
+          </span> */}
         </div>
+
         <Button className="md:hidden text-black" onClick={toggleMenu} variant="ghost">
           {isOpen ? <XIcon className="w-8 h-8" /> : <MenuIcon className="w-8 h-8" />}
         </Button>
       </div>
-      <div className="flex flex-col w-full gap-2">
-        <Image src="/logo1.webp" width={358} height={77.19} alt="Logo" />
-        {/* <h1 className="text-sm font-semibold text-balance mx-auto w-fit text-center text-black flex flex-col gap-1">
-          <span
+
+      <div
+        className={`${
+          isOpen ? 'top-0' : '-top-[1000rem]'
+        } fixed flex flex-col w-full gap-4 p-4 bg-white transition-opacity duration-300 ease-in-out z-0`}
+      >
+        <div className="flex flex-row items-center justify-between w-full">
+          <div className="flex flex-col gap-2 items-center justify-center">
+            <Image src="/logo.webp" width={300} height={64.84} alt="Logo" priority sizes="100%" />
+            {/* <span
             style={{
-              fontFamily: "Playwrite NZ Variable",
+              fontFamily: 'Playwrite NZ Variable'
             }}
             className="text-xl"
           >
-            Shelley and Blaine Bressman
-          </span>
-          <span>Photography and Website Design</span>
-        </h1> */}
-        <p className="text-[#797878] text-base text-center md:text-left w-full z-10">
-          Based in Pensacola Florida <br /> Published in the Wall Street Journal and Contemporary{' '}
-          <br /> Christian Music Magazine
-        </p>
-        <Button className="text-lg bg-[#3898ec] font-bold w-fit mt-4 md:mt-0 mx-auto z-10" asChild>
-          <Link href="https://m.me/shelleyandblainephotography">Chat with me</Link>
-        </Button>
-        <Image
-          src="/rates.webp"
-          width={398}
-          height={224}
-          alt="Testmonial"
-          className="w-full mt-4 md:mt-0"
-          priority
-        />
-      </div>
-      <div
-        className={`${
-          isOpen ? 'flex h-screen' : 'hidden'
-        } absolute top-20 left-0 w-full flex-col items-center md:flex md:flex-row md:items-center gap-4 bg-white transition-opacity duration-300 ease-in-out z-20`}
-      >
-        {/* <Separator className="h-px bg-[#c7c7c7] w-full md:w-1/2" /> */}
+            Portrait Photography
+          </span> */}
+          </div>
+
+          <Button className="md:hidden text-black" onClick={toggleMenu} variant="ghost">
+            {isOpen ? <XIcon className="w-8 h-8" /> : <MenuIcon className="w-8 h-8" />}
+          </Button>
+        </div>
+        <Separator className="h-px bg-[#c7c7c7] w-full md:w-1/2" />
+        <div className="flex flex-col w-full gap-2">
+          <p className="text-[#797878] text-base text-center md:text-left w-full z-10">
+            Based in Pensacola Florida <br /> Published in the Wall Street Journal and Contemporary{' '}
+            <br /> Christian Music Magazine
+          </p>
+        </div>
 
         <Separator className="h-px bg-[#c7c7c7] w-full md:w-1/2 mb-8" />
         <SidebarNav
@@ -93,7 +91,9 @@ export function Navbar() {
           ]}
         />
         <Separator className="h-px bg-[#c7c7c7] w-full md:w-1/2" />
-
+        <Button className="text-lg bg-[#3898ec] font-bold w-fit mt-4 md:mt-0 mx-auto z-10" asChild>
+          <Link href="https://m.me/shelleyandblainephotography">Chat with me</Link>
+        </Button>
         <a
           href="https://www.bbb.org/us/fl/pensacola/profile/photographer/shelley-bressman-photography-0683-90097858/#sealclick"
           target="_blank"

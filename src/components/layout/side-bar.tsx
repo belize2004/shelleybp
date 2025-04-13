@@ -8,8 +8,8 @@ import '@fontsource-variable/playwrite-nz'
 
 export function Sidebar() {
   return (
-    <main className="hidden lg:flex flex-col py-8 px-4 bg-white h-full w-96 gap-6">
-      <div className="flex flex-col gap-2 items-center justify-center">
+    <main className="hidden md:flex flex-col py-8 px-4 bg-white h-full gap-6">
+      <div className="flex flex-col gap-2 justify-center">
         <Image src="/logo.webp" width={300} height={64.84} alt="Logo" priority />
         <span
           style={{
