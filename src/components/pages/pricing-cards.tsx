@@ -31,13 +31,13 @@ const components: PortableTextComponents = {
 
 const PricingCards = ({pricing_cards = null}: Props) => {
   return (
-    <div className="flex flex-wrap items-center justify-center gap-4">
+    <div className="grid grid-cols-2 justify-center gap-4">
       {pricing_cards?.map((card, idx) => {
         return (
           <div
             id={`pricing-card-${idx + 1}`}
             key={card?._key}
-            className="rounded-xl p-4 border-4 my-4 border-gray-400 min-h-52 min-w-52 max-w-72"
+            className="rounded-xl p-4 border-4 my-4 border-gray-400 min-h-52 max-w-72"
           >
             <PortableText value={card.pricing_card} components={components} />
           </div>
