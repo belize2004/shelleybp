@@ -1,8 +1,8 @@
-import {getSeniorPortraits, senior} from '@/lib/api/categories'
+import {getSeniorPortraits} from '@/lib/api/categories'
 
 import PageClient from './page.client'
-import {getQueryClient} from '../../get-query-client'
-import {dehydrate, HydrationBoundary} from '@tanstack/react-query'
+// import {getQueryClient} from '../../get-query-client'
+// import {dehydrate, HydrationBoundary} from '@tanstack/react-query'
 import {Metadata} from 'next'
 import {headers} from 'next/headers'
 import Link from 'next/link'

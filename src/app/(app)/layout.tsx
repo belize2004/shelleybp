@@ -2,7 +2,7 @@ import type {Metadata} from 'next'
 import {Montserrat} from 'next/font/google'
 import '../globals.css'
 import {Sidebar} from '@/components/layout/side-bar'
-import {Providers} from '../providers'
+// import {Providers} from '../providers'
 import {Navbar} from '@/components/layout/navbar'
 import {GoogleTagManager} from '@next/third-parties/google'
 import {CSPostHogProvider} from '../providers'
@@ -25,21 +25,21 @@ export default function AppLayout({
   return (
     <html lang="en">
       <GoogleTagManager gtmId="G-8J64RKE9D8" />
-      <Providers>
+      {/* <Providers> */}
+      <body
+        className={`${mont.className} antialiased bg-[#d6faf6] flex h-screen max-h-screen lg:overflow-hidden flex-col md:flex-row`}
+      >
         <CSPostHogProvider>
-          <body
-            className={`${mont.className} antialiased bg-[#d6faf6] flex h-screen max-h-screen lg:overflow-hidden flex-col md:flex-row`}
-          >
-            <aside className="md:w-1/3 w-full bg-white md:relative fixed max-h-[117.75px] md:h-screen md:max-h-screen overflow-y-auto">
-              <Sidebar />
-              <Navbar />
-            </aside>
-            <main className="grow md:w-2/3 md:h-screen md:pt-0 pt-[117.75px] w-full md:overflow-y-scroll ">
-              {children}
-            </main>
-          </body>
+          <aside className="md:w-1/3 w-full bg-white md:relative fixed max-h-[117.75px] md:h-screen md:max-h-screen overflow-y-auto">
+            <Sidebar />
+            <Navbar />
+          </aside>
+          <main className="grow md:w-2/3 md:h-screen md:pt-0 pt-[117.75px] w-full md:overflow-y-scroll ">
+            {children}
+          </main>
         </CSPostHogProvider>
-      </Providers>
+      </body>
+      {/* </Providers> */}
     </html>
   )
 }

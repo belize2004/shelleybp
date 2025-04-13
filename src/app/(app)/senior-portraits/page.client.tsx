@@ -15,7 +15,7 @@ interface PageClientProps {
 }
 
 export default function PageClient({isMobile, seniorPortraits = null}: PageClientProps) {
-  const {data} = useSuspenseQuery(senior)
+  // const {data} = useSuspenseQuery(senior)
   const breakpointColumnsObj = {
     default: 3,
     1440: 4,
