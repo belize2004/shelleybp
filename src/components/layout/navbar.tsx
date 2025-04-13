@@ -38,7 +38,7 @@ export function Navbar() {
       <div
         className={`${
           isOpen ? 'top-0' : '-top-[1000rem]'
-        } fixed flex flex-col w-full gap-4 p-4 bg-white transition-opacity duration-300 ease-in-out z-0`}
+        } fixed flex flex-col h-screen overflow-y-auto w-full gap-4 p-4 bg-white transition-opacity duration-300 ease-in-out z-0`}
       >
         <div className="flex flex-row items-center justify-between w-full">
           <div className="flex flex-col gap-2 items-center justify-center">
@@ -59,7 +59,7 @@ export function Navbar() {
         </div>
         <Separator className="h-px bg-[#c7c7c7] w-full md:w-1/2" />
         <div className="flex flex-col w-full gap-2">
-          <p className="text-[#797878] text-base text-center md:text-left w-full z-10">
+          <p className="text-[#797878] text-base md:text-left w-full z-10">
             Based in Pensacola Florida <br /> Published in the Wall Street Journal and Contemporary{' '}
             <br /> Christian Music Magazine
           </p>
@@ -69,21 +69,9 @@ export function Navbar() {
         <SidebarNav
           items={[
             {name: 'Home', href: '/'},
-            // { name: "Interior design", href: "https://shelleyandblaine.com/interior-design" },
-            // { name: "real estate", href: "https://shelleyandblaine.com/real-estate" },
-            // { name: "short term rental", href: "/short-term-rental" },
             {name: 'family portrait', href: '/family-portrait'},
-            // {name: 'family portrait pricing', href: '/blog/4ea5eb57-58e5-4b58-9d5a-a6cc0126cc7f'},
             {name: 'Engagement Sessions', href: '/engagement-sessions'},
-            // {
-            //   name: 'Engagement Sessions Pricing',
-            //   href: '/blog/c82d67ce-5de0-4ef0-920a-bf4b27f40810'
-            // },
             {name: 'Senior Portraits', href: '/senior-portraits'},
-            // {name: 'Senior Portrait Pricing', href: '/blog/cb76f642-bea9-49dc-880e-17c065df80bc'},
-            // { name: "Micro Wedding", href: "/micro-wedding" },
-            // { name: "WALL ART BY SHELLEY", href: "/wall-art" },
-            // { name: "Website Design Service", href: "/website-design-service" },
             {name: 'contact', href: '/contact'},
             {name: 'about', href: '/about'},
             {name: 'in the press', href: '/press'},
@@ -91,7 +79,7 @@ export function Navbar() {
           ]}
         />
         <Separator className="h-px bg-[#c7c7c7] w-full md:w-1/2" />
-        <Button className="text-lg bg-[#3898ec] font-bold w-fit mt-4 md:mt-0 mx-auto z-10" asChild>
+        <Button className="text-lg bg-[#3898ec] font-bold w-fit mt-4 md:mt-0 z-10" asChild>
           <Link href="https://m.me/shelleyandblainephotography">Chat with me</Link>
         </Button>
         <a

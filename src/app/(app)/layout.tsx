@@ -30,11 +30,11 @@ export default function AppLayout({
         <body
           className={`${mont.className} antialiased bg-[#d6faf6] flex h-screen max-h-screen lg:overflow-hidden flex-col md:flex-row`}
         >
-          <aside className="md:w-1/3 w-full bg-white fixed max-h-[117.75px] md:h-screen md:max-h-screen overflow-y-auto">
+          <aside className="md:w-1/3 w-full bg-white md:relative fixed max-h-[117.75px] md:h-screen md:max-h-screen overflow-y-auto">
             <Sidebar />
             <Navbar />
           </aside>
-          <main className="grow md:w-2/3 md:h-screen pt-[117.75px] w-full md:overflow-y-scroll flex-1 md:flex-0">
+          <main className="grow md:w-2/3 md:h-screen md:pt-0 pt-[117.75px] w-full md:overflow-y-scroll ">
             {children}
           </main>
         </body>
