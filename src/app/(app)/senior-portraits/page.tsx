@@ -7,6 +7,7 @@ import {Metadata} from 'next'
 import {headers} from 'next/headers'
 import Link from 'next/link'
 import PricingCards from '@/components/pages/pricing-cards'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Senior Portrait Photography Pensacola | Shelley Bressman Photography',
@@ -36,7 +37,14 @@ export default async function Page() {
       </Link>
 
       <PricingCards pricing_cards={seniorPortraits?.pricing_cards || []} />
-
+      <Image
+        src="/ratings.webp"
+        width={398}
+        height={224}
+        alt="Testmonial"
+        className="w-full my-4 md:mt-0"
+        priority
+      />
       {/* <HydrationBoundary state={dehydrate(queryClient)}> */}
       <PageClient isMobile={isMobile} seniorPortraits={seniorPortraits} />
       {/* </HydrationBoundary> */}

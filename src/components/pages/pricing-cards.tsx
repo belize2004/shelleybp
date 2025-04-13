@@ -31,7 +31,7 @@ const components: PortableTextComponents = {
 
 const PricingCards = ({pricing_cards = null}: Props) => {
   return (
-    <div className="grid grid-cols-2 justify-center gap-4">
+    <div className="grid grid-cols-2 xl:grid-cols-3 justify-center gap-4">
       {pricing_cards?.map((card, idx) => {
         return (
           <div
