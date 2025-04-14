@@ -29,21 +29,34 @@ const components: PortableTextComponents = {
   }
 }
 
-const PricingCards = ({pricing_cards = null}: Props) => {
+const PricingCards = ({pricing_cards = []}: Props) => {
+  const lengthOfPricingCards = pricing_cards?.length
+  const isOddNumber = lengthOfPricingCards % 2 === 1
+  const lastCard = isOddNumber ? pricing_cards[lengthOfPricingCards - 1] : null
   return (
-    <div className="grid grid-cols-2 xl:grid-cols-3 justify-center gap-4">
-      {pricing_cards?.map((card, idx) => {
-        return (
-          <div
-            id={`pricing-card-${idx + 1}`}
-            key={card?._key}
-            className="rounded-xl mx-auto p-4 border-4 my-4 border-gray-400 min-h-52 max-w-72"
-          >
-            <PortableText value={card.pricing_card} components={components} />
-          </div>
-        )
-      })}
-    </div>
+    <>
+      <div className="grid grid-cols-2 gap-4">
+        {pricing_cards?.map((card, idx) => {
+          return isOddNumber && idx === lengthOfPricingCards - 1 ? null : (
+            <div
+              id={`pricing-card-${idx + 1}`}
+              key={card?._key}
+              className="rounded-xl mx-auto p-4 border-4 my-4 border-gray-400 min-h-52 max-w-72"
+            >
+              <PortableText value={card?.pricing_card} components={components} />
+            </div>
+          )
+        })}
+      </div>
+      {lastCard && (
+        <div
+          id={`pricing-card-${lengthOfPricingCards}`}
+          className="rounded-xl mx-auto p-4 border-4 my-4 border-gray-400 min-h-52 max-w-72"
+        >
+          <PortableText value={lastCard?.pricing_card} components={components} />
+        </div>
+      )}
+    </>
   )
 }
 
