@@ -36,9 +36,9 @@ export default async function Page() {
 
       <PricingCards pricing_cards={engagementSessions?.pricing_cards || []} />
       <Image
-        src="/ratings.webp"
-        width={398}
-        height={224}
+        src="/ratings_updated.webp"
+        width={4095}
+        height={739}
         alt="Testmonial"
         className="w-full my-4 md:mt-0"
         priority
