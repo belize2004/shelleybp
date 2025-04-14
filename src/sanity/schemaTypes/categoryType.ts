@@ -17,6 +17,25 @@ export const categoryType = defineType({
       to: {type: 'blog'}
     }),
     defineField({
+      name: 'link_sharing_image',
+      type: 'image',
+      options: {
+        hotspot: true
+      },
+      fields: [
+        defineField({
+          name: 'title',
+          type: 'string',
+          title: 'Title'
+        }),
+        defineField({
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative text'
+        })
+      ]
+    }),
+    defineField({
       name: 'photos',
       type: 'array',
       of: [
