@@ -1,5 +1,6 @@
 import {LayoutGrid} from 'lucide-react'
 import {defineArrayMember, defineField, defineType} from 'sanity'
+import CustomImageInput from './CustomInput'
 
 export const categoryType = defineType({
   name: 'category',
@@ -45,12 +46,14 @@ export const categoryType = defineType({
           options: {
             hotspot: true
           },
+          components: {
+            input: CustomImageInput
+          },
           fields: [
             defineField({
               name: 'title',
               type: 'string',
-              title: 'Title',
-              initialValue: '1'
+              title: 'Title'
             }),
             defineField({
               name: 'alt',
