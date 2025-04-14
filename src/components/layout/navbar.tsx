@@ -19,15 +19,14 @@ export function Navbar() {
     <nav className="flex items-center p-4 bg-white w-full md:hidden gap-6 flex-col">
       <div className="flex flex-row items-center justify-between w-full">
         <div className="flex flex-col gap-2 items-center justify-center">
-          <Image src="/logo.webp" width={300} height={64.84} alt="Logo" priority sizes="100%" />
-          {/* <span
-            style={{
-              fontFamily: 'Playwrite NZ Variable'
-            }}
-            className="text-xl"
-          >
-            Portrait Photography
-          </span> */}
+          <Image
+            src="/logo.webp"
+            width={260}
+            height={60}
+            alt="Logo"
+            priority
+            className="!max-w-[260px] !max-h-[60px]"
+          />
         </div>
 
         <Button className="md:hidden text-black" onClick={toggleMenu} variant="ghost">
@@ -42,15 +41,7 @@ export function Navbar() {
       >
         <div className="flex flex-row items-center justify-between w-full">
           <div className="flex flex-col gap-2 items-center justify-center">
-            <Image src="/logo.webp" width={300} height={64.84} alt="Logo" priority sizes="100%" />
-            {/* <span
-            style={{
-              fontFamily: 'Playwrite NZ Variable'
-            }}
-            className="text-xl"
-          >
-            Portrait Photography
-          </span> */}
+            <Image src="/logo.webp" width={260} height={60} alt="Logo" priority className="" />
           </div>
 
           <Button className="md:hidden text-black" onClick={toggleMenu} variant="ghost">
