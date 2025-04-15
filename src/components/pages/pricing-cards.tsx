@@ -30,32 +30,26 @@ const components: PortableTextComponents = {
 }
 
 const PricingCards = ({pricing_cards = []}: Props) => {
-  const lengthOfPricingCards = pricing_cards?.length
-  const isOddNumber = lengthOfPricingCards % 2 === 1
-  const lastCard = isOddNumber ? pricing_cards[lengthOfPricingCards - 1] : null
+  const numCards = pricing_cards.length
+
   return (
     <>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-3 items-center gap-2">
         {pricing_cards?.map((card, idx) => {
-          return isOddNumber && idx === lengthOfPricingCards - 1 ? null : (
+          const isLast = idx === numCards - 1
+
+          const centerClass = isLast ? 'lg:col-span-1 col-span-full' : ''
+          return (
             <div
               id={`pricing-card-${idx + 1}`}
               key={card?._key}
-              className="rounded-xl mx-auto p-4 border-4 my-4 border-gray-400 min-h-52 max-w-72"
+              className={`rounded-xl mx-auto p-4 border-4 my-4 border-gray-400 min-h-52 ${centerClass}`}
             >
               <PortableText value={card?.pricing_card} components={components} />
             </div>
           )
         })}
       </div>
-      {lastCard && (
-        <div
-          id={`pricing-card-${lengthOfPricingCards}`}
-          className="rounded-xl mx-auto p-4 border-4 my-4 border-gray-400 min-h-52 max-w-72"
-        >
-          <PortableText value={lastCard?.pricing_card} components={components} />
-        </div>
-      )}
     </>
   )
 }
