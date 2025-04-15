@@ -46,7 +46,7 @@ const PricingCards = ({pricing_cards = []}: Props) => {
             <div
               id={`pricing-card-${idx + 1}`}
               key={card?._key}
-              className={`rounded-xl mx-auto p-4 border-4 my-4 border-gray-400 min-h-52 ${centerClass}`}
+              className={`rounded-xl mx-auto p-4 border-4 my-4 border-gray-400 min-h-52 w-full ${centerClass}`}
             >
               <PortableText value={card?.pricing_card} components={components} />
             </div>
