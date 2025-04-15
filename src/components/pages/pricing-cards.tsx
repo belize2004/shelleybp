@@ -31,14 +31,17 @@ const components: PortableTextComponents = {
 
 const PricingCards = ({pricing_cards = []}: Props) => {
   const numCards = pricing_cards.length
+  const isOddLength = numCards % 2 === 1
 
   return (
     <>
-      <div className="grid grid-cols-2 lg:grid-cols-3 items-center gap-2">
+      <div
+        className={`grid grid-cols-2 ${isOddLength && numCards > 2 ? 'lg:grid-cols-3' : ''} items-center gap-2`}
+      >
         {pricing_cards?.map((card, idx) => {
           const isLast = idx === numCards - 1
 
-          const centerClass = isLast ? 'lg:col-span-1 col-span-full' : ''
+          const centerClass = isLast && isOddLength ? 'lg:col-span-1 col-span-full' : ''
           return (
             <div
               id={`pricing-card-${idx + 1}`}
