@@ -7,6 +7,8 @@ import Masonry from 'react-masonry-css'
 import Link from 'next/link'
 
 import {generalImageURL} from '@/lib/helpers'
+import {useState} from 'react'
+import EnlargedImage from '@/components/pages/EnlargedImage'
 
 interface PageClientProps {
   isMobile: boolean
@@ -14,6 +16,8 @@ interface PageClientProps {
 }
 
 export default function PageClient({isMobile, familyPortraits = null}: PageClientProps) {
+  const [enlargedImg, setEnlargedImg] = useState(null)
+
   const breakpointColumnsObj = {
     default: 3,
     1440: 4,
@@ -21,9 +25,15 @@ export default function PageClient({isMobile, familyPortraits = null}: PageClien
     700: 2,
     500: 1
   }
+  const onCloseImage = () => {
+    setEnlargedImg(null)
+  }
 
   return (
     <>
+      {enlargedImg && (
+        <EnlargedImage src={enlargedImg?.src} alt={enlargedImg?.alt} zoomOut={onCloseImage} />
+      )}
       {isMobile ? (
         // <div className=" flex flex-col gap-4">
         //   {/* <Image
@@ -69,14 +79,19 @@ export default function PageClient({isMobile, familyPortraits = null}: PageClien
             const dimension = image?.asset?._ref?.split('-')[2]
             const width = dimension ? dimension?.split('x')[0] : 1200
             const height = dimension ? dimension?.split('x')[1] : 120
+
+            const onClick = () => {
+              setEnlargedImg({alt: image?.image?.alt || image?.title, src: imgUrl, onCloseImage})
+            }
             return (
               <div key={image?._key} className="mb-4">
                 <Image
+                  onClick={onClick}
                   src={imgUrl || '/placeholder.svg'}
                   width={width || 1200}
                   height={height || 120}
                   alt={image?.title || 'Image'}
-                  className="rounded-xl w-full h-auto" // Made image responsive
+                  className="rounded-xl w-full h-auto cursor-zoom-in" // Made image responsive
                 />
               </div>
             )
@@ -101,14 +116,19 @@ export default function PageClient({isMobile, familyPortraits = null}: PageClien
             const dimension = image?.asset?._ref?.split('-')[2]
             const width = dimension ? dimension?.split('x')[0] : 1200
             const height = dimension ? dimension?.split('x')[1] : 120
+
+            const onClick = () => {
+              setEnlargedImg({alt: image?.image?.alt || image?.title, src: imgUrl, onCloseImage})
+            }
             return (
               <div key={image?._key} className="mb-4">
                 <Image
+                  onClick={onClick}
                   src={imgUrl || '/placeholder.svg'}
                   width={width || 1200}
                   height={height || 120}
                   alt={image?.title || 'Image'}
-                  className="rounded-xl w-full h-auto" // Made image responsive
+                  className="rounded-xl w-full h-auto cursor-zoom-in" // Made image responsive
                 />
               </div>
             )

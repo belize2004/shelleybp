@@ -1,9 +1,11 @@
 'use client'
 
 import {BlogCard} from '@/components/blog/card'
+import EnlargedImage from '@/components/pages/EnlargedImage'
 import {generalImageURL} from '@/lib/helpers'
 
 import Image from 'next/image'
+import {useState} from 'react'
 import Masonry from 'react-masonry-css'
 
 interface PageClientProps {
@@ -12,6 +14,10 @@ interface PageClientProps {
 }
 
 export default function PageClient({isMobile, engagementSessions = null}: PageClientProps) {
+  const [enlargedImg, setEnlargedImg] = useState(null)
+  const onCloseImage = () => {
+    setEnlargedImg(null)
+  }
   const breakpointColumnsObj = {
     default: 3,
     1440: 4,
@@ -22,6 +28,9 @@ export default function PageClient({isMobile, engagementSessions = null}: PageCl
 
   return (
     <>
+      {enlargedImg && (
+        <EnlargedImage src={enlargedImg?.src} alt={enlargedImg?.alt} zoomOut={onCloseImage} />
+      )}
       {isMobile ? (
         <Masonry
           breakpointCols={{
@@ -44,14 +53,18 @@ export default function PageClient({isMobile, engagementSessions = null}: PageCl
             const dimension = image?.asset?._ref?.split('-')[2]
             const width = dimension ? dimension?.split('x')[0] : 1200
             const height = dimension ? dimension?.split('x')[1] : 120
+            const onClick = () => {
+              setEnlargedImg({alt: image?.image?.alt || image?.title, src: imgUrl, onCloseImage})
+            }
             return (
               <div key={image?._key} className="mb-4">
                 <Image
                   src={imgUrl || '/placeholder.svg'}
+                  onClick={onClick}
                   width={width || 1200}
                   height={height || 120}
                   alt={image?.title || 'Image'}
-                  className="rounded-xl w-full h-auto" // Made image responsive
+                  className="rounded-xl w-full h-auto cursor-zoom-in" // Made image responsive
                 />
               </div>
             )
@@ -76,16 +89,20 @@ export default function PageClient({isMobile, engagementSessions = null}: PageCl
             const dimension = image?.asset?._ref?.split('-')[2]
             const width = dimension ? dimension?.split('x')[0] : 1200
             const height = dimension ? dimension?.split('x')[1] : 120
+            const onClick = () => {
+              setEnlargedImg({alt: image?.image?.alt || image?.title, src: imgUrl, onCloseImage})
+            }
             return (
               <div key={image?._key} className="mb-4">
                 {' '}
                 {/* Changed margin to bottom only */}
                 <Image
                   src={imgUrl || '/placeholder.svg'}
+                  onClick={onClick}
                   width={width || 1200}
                   height={height || 120}
                   alt={image?.title || 'Image'}
-                  className="rounded-xl w-full h-auto" // Made image responsive
+                  className="rounded-xl w-full h-auto cursor-zoom-in" // Made image responsive
                 />
               </div>
             )

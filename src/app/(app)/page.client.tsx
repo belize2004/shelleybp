@@ -7,36 +7,16 @@ import {BlogCard} from '@/components/blog/card'
 import {generalImageURL} from '@/lib/helpers'
 import {useState} from 'react'
 import {createPortal} from 'react-dom'
+import EnlargedImage from '@/components/pages/EnlargedImage'
 
 interface PageClientProps {
   isMobile: boolean
   homeData?: any
 }
 
-const EnlargedImage = ({alt, src, closeEnlargeImage}) => {
-  return (
-    <>
-      <div className="absolute w-screen h-screen">
-        <div
-          className="bg-black opacity-85 backdrop-blur-sm
- z-10 fixed size-full"
-        ></div>
-      </div>
-
-      <Image
-        onClick={() => closeEnlargeImage()}
-        src={src}
-        width={window.screen.width}
-        height={window.screen.height}
-        alt={alt || 'Gallery image'}
-        className={`fixed rounded-xl object-contain h-screen w-screen p-4 z-20 cursor-pointer`}
-      />
-    </>
-  )
-}
-
 export default function PageClient({isMobile, homeData = null}: PageClientProps) {
   const [enlargedImg, setEnlargedImg] = useState(null)
+
   const breakpointColumnsObj = {
     default: 3,
     1440: 4,
@@ -58,6 +38,7 @@ export default function PageClient({isMobile, homeData = null}: PageClientProps)
     const dimension = image.image.asset._ref.split('-')[2]
     const width = dimension ? dimension.split('x')[0] : 1000
     const height = dimension ? dimension.split('x')[1] : 1000
+
     const onClick = () => {
       setEnlargedImg({alt: image?.image?.alt, src: imgUrl, onCloseImage})
     }
@@ -70,7 +51,7 @@ export default function PageClient({isMobile, homeData = null}: PageClientProps)
           width={width || 1000}
           height={height || 1000}
           alt={image.image?.alt || 'Gallery image'}
-          className={`rounded-xl w-full h-auto cursor-pointer`}
+          className={`rounded-xl w-full h-auto cursor-zoom-in`}
           priority={index < 4}
           loading={index < 4 ? 'eager' : 'lazy'}
         />
@@ -80,15 +61,9 @@ export default function PageClient({isMobile, homeData = null}: PageClientProps)
 
   return (
     <>
-      {enlargedImg &&
-        createPortal(
-          <EnlargedImage
-            src={enlargedImg?.src}
-            alt={enlargedImg?.alt}
-            closeEnlargeImage={onCloseImage}
-          />,
-          document.body
-        )}
+      {enlargedImg && (
+        <EnlargedImage src={enlargedImg?.src} alt={enlargedImg?.alt} zoomOut={onCloseImage} />
+      )}
       {isMobile ? (
         // <div className="flex flex-col gap-4">
         //   {/* <Image
