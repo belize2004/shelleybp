@@ -5,7 +5,7 @@ import Masonry from 'react-masonry-css'
 
 import {BlogCard} from '@/components/blog/card'
 import {generalImageURL} from '@/lib/helpers'
-import {useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import {createPortal} from 'react-dom'
 import EnlargedImage from '@/components/pages/EnlargedImage'
 
@@ -17,6 +17,58 @@ interface PageClientProps {
 export default function PageClient({isMobile, homeData = null}: PageClientProps) {
   const [enlargedImg, setEnlargedImg] = useState(null)
 
+  const [posts, setPosts] = useState<any[]>([])
+  const [start, setStart] = useState(0)
+  const [totalItems, setTotalItems] = useState(posts.length)
+  const [isFirstLoadComplete, setIsFirstLoadComplete] = useState(false)
+  const [reachedEnd, setReachedEnd] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const loaderRef = useRef<HTMLDivElement | null>(null)
+
+  const fetchData = async () => {
+    setLoading(true)
+    const res = await fetch(`/api?start=${start}&limit=${isMobile ? 10 : 20}`)
+
+    const data = await res?.json()
+    if (data) {
+      setTotalItems(data.galleryCount)
+      setPosts((prev) => [...prev, ...data.gallery])
+      setStart((prev) => prev + (isMobile ? 10 : 20))
+    }
+    if (!isFirstLoadComplete) {
+      setIsFirstLoadComplete(true)
+    }
+    setLoading(false)
+  }
+
+  useEffect(() => {
+    fetchData() // Initial load
+  }, [])
+
+  useEffect(() => {
+    if (posts.length === totalItems && isFirstLoadComplete) {
+      setReachedEnd(true)
+    }
+  }, [posts, totalItems, isFirstLoadComplete])
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !loading && !reachedEnd) {
+          fetchData()
+        }
+      },
+      {threshold: 1}
+    )
+
+    const currentLoader = loaderRef.current
+    if (currentLoader) observer.observe(currentLoader)
+
+    return () => {
+      if (currentLoader) observer.unobserve(currentLoader)
+    }
+  }, [loaderRef.current, loading])
+
   const breakpointColumnsObj = {
     default: 3,
     1440: 4,
@@ -25,9 +77,9 @@ export default function PageClient({isMobile, homeData = null}: PageClientProps)
     500: 1
   }
 
-  const imagesSorted = homeData?.gallery?.filter((image) => image.order)
+  const imagesSorted = posts?.filter((image) => image.order)
 
-  const imagesUnSorted = homeData?.gallery?.filter((image) => !image.order)
+  const imagesUnSorted = posts?.filter((image) => !image.order)
 
   const onCloseImage = () => {
     setEnlargedImg(null)
@@ -151,6 +203,11 @@ export default function PageClient({isMobile, homeData = null}: PageClientProps)
       <div className="flex flex-col p-8 gap-8">
         {homeData?.blogs?.map((b) => <BlogCard key={b._id} blogPost={b} />)}
       </div>
+      {reachedEnd ? null : (
+        <div ref={loaderRef} className="col-span-full text-center py-8">
+          {loading && <p>Loading more...</p>}
+        </div>
+      )}
     </>
   )
 }
