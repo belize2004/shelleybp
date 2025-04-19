@@ -87,7 +87,7 @@ export default function PageClient({isMobile, homeData = null}: PageClientProps)
 
   const ImageComponent = ({image, index}: {image: any; index: number}) => {
     const imgUrl = generalImageURL(image?.image)
-    const dimension = image.image.asset._ref.split('-')[2]
+    const dimension = image?.image?.asset?._ref?.split('-')[2]
     const width = dimension ? dimension.split('x')[0] : 1000
     const height = dimension ? dimension.split('x')[1] : 1000
 
@@ -102,7 +102,7 @@ export default function PageClient({isMobile, homeData = null}: PageClientProps)
           src={imgUrl}
           width={width || 1000}
           height={height || 1000}
-          alt={image.image?.alt || 'Gallery image'}
+          alt={image?.image?.alt || 'Gallery image'}
           className={`rounded-xl w-full h-auto cursor-zoom-in`}
           priority={index < 4}
           loading={index < 4 ? 'eager' : 'lazy'}

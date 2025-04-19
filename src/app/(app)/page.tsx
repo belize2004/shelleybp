@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  const homeData = await getHomeData()
+  // const homeData = await getHomeData()
 
   const headersList = headers()
   const userAgent = (await headersList).get('user-agent') || ''
@@ -19,7 +19,7 @@ export default async function Home() {
 
   return (
     <div className="p-4">
-      <PageClient isMobile={isMobile} homeData={homeData} />
+      <PageClient isMobile={isMobile} homeData={null} />
     </div>
   )
 }
