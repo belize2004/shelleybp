@@ -109,6 +109,18 @@ export async function getSeniorPortraits() {
     return []
   }
 }
+export async function getFamilyPhotography() {
+  try {
+    const pensacolaFamilyPhotography = await client.fetch(
+      '*[_type == "category" && name == "pensacola-family-photography"][0]',
+      {},
+      {next: {revalidate: 600}}
+    )
+    return pensacolaFamilyPhotography
+  } catch (error) {
+    return []
+  }
+}
 
 export const senior = queryOptions({
   queryKey: ['senior-portrait'],
